@@ -23,7 +23,7 @@ CHANNEL_ID:                     # channel id *Required
 MODE:                           # mode: quote, repost *Leave blank Default: quote
 DELAY: 60	                      # Delay per send massage *second
 DEL_AFTER: True                 # Delete after send *Leave blank if you dont use it 
-REPOST_LAST_CHAT: 100            # Repost from last ?n chat in channel          
+REPOST_LAST_CHAT: 100           # Repost from last ?n chat in channel          
 ```
 ## • How to get Discord SelfBot Token?
 
@@ -39,7 +39,7 @@ or you can create bookmark and paste this js inject to url bookmark, and click w
 
 ## • How to Run?
 ```bash
-cd DiscordSelfBot
+cd DiscordSelfbot
 python3 bot.py
 ```
 ## • Features
