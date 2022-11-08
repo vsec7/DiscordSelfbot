@@ -26,9 +26,9 @@ git clone https://github.com/vsec7/DiscordSelfbot.git
 ```env
 BOT_TOKEN:                      # Discord SelfBot Token *Required
 CHANNEL_ID:                     # channel id *Required
-MODE:                           # mode: quote, repost *Leave blank Default: quote
-SIMSIMI_LANG: 					# Simsimi Language (id/en) *Leave blank Default: id
-DELAY: 60	                    # Delay per send massage *second
+MODE:                           # mode: (quote, repost, simsimi) *Leave blank Default: quote
+SIMSIMI_LANG: 					        # Simsimi Language (id/en) *Leave blank Default: id
+DELAY: 60	                      # Delay per send massage *second
 DELAY: 60	                      # Delay per send massage *second
 DEL_AFTER: True                 # Delete after send *Leave blank if you dont use it 
 REPOST_LAST_CHAT: 100           # Repost from last ?n chat in channel          
