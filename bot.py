@@ -11,6 +11,9 @@ def quote():
   u = requests.get("https://raw.githubusercontent.com/lakuapik/quotes-indonesia/master/raw/quotes.min.json").json()
   return random.choice(list(u))['quote']
 
+def simsimi(lc, txt):
+  u = requests.get("https://simsimi.info/api/?lc="+ lc + "&text=" + txt).json()
+  return u['message']
 
 if __name__ == "__main__":
 
@@ -20,6 +23,7 @@ if __name__ == "__main__":
   token = conf['BOT_TOKEN']
   chan = conf['CHANNEL_ID']
   mode = conf['MODE']
+  simi_lc = conf['SIMSIMI_LANG']
   delay = conf['DELAY']
   del_after = conf['DEL_AFTER']
   repost_last = conf['REPOST_LAST_CHAT']
@@ -34,6 +38,9 @@ if __name__ == "__main__":
     
   if not mode: 
     mode = "quote"
+    
+  if not simi_lc:
+    simi_lc = "id"
     
   if not repost_last: 
     repost_last = "100"
@@ -60,6 +67,19 @@ if __name__ == "__main__":
       
       send = Bot.sendMessage(chan, getlast['content'])
       print("[{}][REPOST] {}".format(me, getlast['content']))
+
+      if del_after:
+        delmsg = Bot.deleteMessage(chan, send['id'])
+        print("[{}][DELETE] {}".format(me, send['id']))
+        
+    elif mode == "simsimi":
+      res = Bot.getMessage(chan, "1")
+      getlast = list(reversed(res))[0]
+      
+      simi = simsimi(simi_lc, getlast['content'])
+      
+      send = Bot.sendMessage(chan, simi)
+      print("[{}][SIMSIMI] {}".format(me, simi))
 
       if del_after:
         delmsg = Bot.deleteMessage(chan, send['id'])

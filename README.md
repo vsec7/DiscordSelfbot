@@ -6,6 +6,12 @@ Created By viloid (github.com/vsec7)
 
 *** NOTE : USE AT YOUR OWN RISK! ***
 
+## • Features
+- Send Quote message
+- Send Response Simsimi message
+- Send Repost message from channel chat history 
+- Auto Delete message
+
 ## • Requirements
 - Python3
 
@@ -18,12 +24,13 @@ git clone https://github.com/vsec7/DiscordSelfbot.git
 ## • Edit Configurations *config.yaml* file
 
 ```env
-BOT_TOKEN=                      # Discord SelfBot Token *Required
-CHANNEL_ID=                     # channel id *Required
-MODE=                           # mode: quote, repost *Leave blank Default: quote
+BOT_TOKEN:                      # Discord SelfBot Token *Required
+CHANNEL_ID:                     # channel id *Required
+MODE:                           # mode: quote, repost *Leave blank Default: quote
+SIMSIMI_LANG: 					# Simsimi Language (id/en) *Leave blank Default: id
 DELAY: 60	                    # Delay per send massage *second
-DEL_AFTER= True                 # Delete after send *Leave blank if you dont use it 
-REPOST_LAST_CHAT=100            # Repost from last ?n chat in channel          
+DEL_AFTER: True                 # Delete after send *Leave blank if you dont use it 
+REPOST_LAST_CHAT: 100           # Repost from last ?n chat in channel          
 ```
 ## • How to get Discord SelfBot Token?
 
@@ -39,13 +46,9 @@ or you can create bookmark and paste this js inject to url bookmark, and click w
 
 ## • How to Run?
 ```bash
-cd DiscordSelfBot
+cd DiscordSelfbot
 python3 bot.py
 ```
-## • Features
-- Send Quote message
-- Send Repost message from channel chat history 
-- Auto Delete message
 
 ## • Donation
 
