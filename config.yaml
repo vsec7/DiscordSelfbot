@@ -1,6 +1,8 @@
-BOT_TOKEN: ODE3Mzxxxxxxxxxxxxxx
-CHANNEL_ID: 1030xxxxxxxxxxxxxxx
-MODE: 
+BOT_TOKEN: 
+  - ODE3MzkzOTQ4xxxxxxxxxxxxxxxxxxxx
+  - ODk1NTEyMDExxxxxxxxxxxxxxxxxxxxx
+CHANNEL_ID: 1030095xxxxxxxxxxxxx
+MODE: simsimi
 SIMSIMI_LANG: 
 DELAY: 60
 DEL_AFTER: 
