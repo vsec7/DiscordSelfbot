@@ -28,7 +28,10 @@ BOT_TOKEN:                      # Discord SelfBot Token *Required
     - Discord Token 1           # You can add multiple discord token
     - Discord Token 2                     
 CHANNEL_ID:                     # channel id *Required
+    - Channel Id 1
+    - Channel Id 2              # You can add multiple channel id
 MODE:                           # mode: (quote, repost, simsimi) *Leave blank Default: quote
+REPLY: Y                        # For simsimi mode only *Leave blank if you dont use it
 SIMSIMI_LANG: 				    # Simsimi Language (id/en) *Leave blank Default: id
 DELAY: 60	                    # Delay per send massage *second
 DEL_AFTER: Y                    # Delete after send *Leave blank if you dont use it 

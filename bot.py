@@ -47,17 +47,16 @@ def main():
         print("[!] Please provide discord token at config.yaml!")
         sys.exit()
 
-    chan = conf['CHANNEL_ID']
+    if not conf['CHANNEL_ID']:
+        print("[!] Please provide channel id at config.yaml!")
+        sys.exit()
+
     mode = conf['MODE']
     simi_lc = conf['SIMSIMI_LANG']
     delay = conf['DELAY']
     del_after = conf['DEL_AFTER']
     repost_last = conf['REPOST_LAST_CHAT']
-        
-    if not chan:
-        print("[!] Please provide channel id at config.yaml!")
-        sys.exit()
-        
+                
     if not mode: 
         mode = "quote"
         
@@ -71,35 +70,43 @@ def main():
         for token in conf['BOT_TOKEN']:
             try:
 
-                Bot = Discord(token)
-                me = Bot.getMe()['username'] + "#" + Bot.getMe()['discriminator']
-                
-                if mode == "quote":
-                    q = quote()
-                    send = Bot.sendMessage(chan, q)
-                    print("[{}][QUOTE] {}".format(me, q))                
-                    if del_after:
-                        Bot.deleteMessage(chan, send['id'])
-                        print("[{}][DELETE] {}".format(me, send['id']))
+                for chan in conf['CHANNEL_ID']:
 
-                elif mode == "repost":
-                    res = Bot.getMessage(chan, repost_last)
-                    getlast = list(reversed(res))[0]                    
-                    send = Bot.sendMessage(chan, getlast['content'])
-                    print("[{}][REPOST] {}".format(me, getlast['content']))
-                    if del_after:
-                        Bot.deleteMessage(chan, send['id'])
-                        print("[{}][DELETE] {}".format(me, send['id']))
+                    Bot = Discord(token)
+                    me = Bot.getMe()['username'] + "#" + Bot.getMe()['discriminator']
                     
-                elif mode == "simsimi":
-                    res = Bot.getMessage(chan, "1")
-                    getlast = list(reversed(res))[0]                
-                    simi = simsimi(simi_lc, getlast['content'])                    
-                    send = Bot.sendMessage(chan, simi)
-                    print("[{}][SIMSIMI] {}".format(me, simi))
-                    if del_after:
-                        Bot.deleteMessage(chan, send['id'])
-                        print("[{}][DELETE] {}".format(me, send['id']))
+                    if mode == "quote":
+                        q = quote()
+                        Bot.sendMessage(chan, q)
+                        print("[{}][{}][QUOTE] {}".format(me, chan, q))                
+                        if del_after:
+                            Bot.deleteMessage(chan, send['id'])
+                            print("[{}][DELETE] {}".format(me, send['id']))
+
+                    elif mode == "repost":
+                        res = Bot.getMessage(chan, repost_last)
+                        getlast = list(reversed(res))[0]                    
+                        Bot.sendMessage(chan, getlast['content'])
+                        print("[{}][{}][REPOST] {}".format(me, chan, getlast['content']))
+                        if del_after:
+                            Bot.deleteMessage(chan, send['id'])
+                            print("[{}][DELETE] {}".format(me, send['id']))
+                        
+                    elif mode == "simsimi":
+                        res = Bot.getMessage(chan, "1")
+                        getlast = list(reversed(res))[0]                
+                        simi = simsimi(simi_lc, getlast['content'])
+
+                        if conf['REPLY']:
+                            Bot.replyMessage(chan, getlast['id'], simi)
+                            print("[{}][{}][SIMSIMI] {}".format(me, chan, simi))
+                        else:
+                            Bot.sendMessage(chan, simi)
+                            print("[{}][{}][SIMSIMI] {}".format(me, chan, simi))
+
+                        if del_after:
+                            Bot.deleteMessage(chan, send['id'])
+                            print("[{}][DELETE] {}".format(me, send['id']))
             except:
                 print(f"[Error] {token} : INVALID TOKEN / KICKED FROM GUILD!")
         
