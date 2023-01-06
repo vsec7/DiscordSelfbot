@@ -77,7 +77,7 @@ def main():
                     
                     if mode == "quote":
                         q = quote()
-                        Bot.sendMessage(chan, q)
+                        send = Bot.sendMessage(chan, q)
                         print("[{}][{}][QUOTE] {}".format(me, chan, q))                
                         if del_after:
                             Bot.deleteMessage(chan, send['id'])
@@ -86,7 +86,7 @@ def main():
                     elif mode == "repost":
                         res = Bot.getMessage(chan, repost_last)
                         getlast = list(reversed(res))[0]                    
-                        Bot.sendMessage(chan, getlast['content'])
+                        send = Bot.sendMessage(chan, getlast['content'])
                         print("[{}][{}][REPOST] {}".format(me, chan, getlast['content']))
                         if del_after:
                             Bot.deleteMessage(chan, send['id'])
@@ -98,10 +98,10 @@ def main():
                         simi = simsimi(simi_lc, getlast['content'])
 
                         if conf['REPLY']:
-                            Bot.replyMessage(chan, getlast['id'], simi)
+                            send = Bot.replyMessage(chan, getlast['id'], simi)
                             print("[{}][{}][SIMSIMI] {}".format(me, chan, simi))
                         else:
-                            Bot.sendMessage(chan, simi)
+                            send = Bot.sendMessage(chan, simi)
                             print("[{}][{}][SIMSIMI] {}".format(me, chan, simi))
 
                         if del_after:
