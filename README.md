@@ -9,7 +9,8 @@ Created By viloid (github.com/vsec7)
 ## • Features
 - Send Quote message
 - Send Response Simsimi message
-- Send Repost message from channel chat history 
+- Send Repost message from channel chat history
+- Send select random line from custom.txt
 - Auto Delete message
 
 ## • Requirements
@@ -30,7 +31,7 @@ BOT_TOKEN:                      # Discord SelfBot Token *Required
 CHANNEL_ID:                     # channel id *Required
     - Channel Id 1
     - Channel Id 2              # You can add multiple channel id
-MODE:                           # mode: (quote, repost, simsimi) *Leave blank Default: quote
+MODE:                           # mode: (quote, repost, simsim, custom) *Leave blank Default: quote
 REPLY: Y                        # For simsimi mode only *Leave blank if you dont use it
 SIMSIMI_LANG: 				    # Simsimi Language (id/en) *Leave blank Default: id
 DELAY: 60	                    # Delay per send massage *second
@@ -40,8 +41,10 @@ REPOST_LAST_CHAT: 100           # Repost from last ?n chat in channel
 ## • How to get Discord SelfBot Token?
 
 ```
-javascript:var i = document.createElement('iframe');i.onload = function(){var localStorage = i.contentWindow.localStorage;prompt('DC Token By @github.com/vsec7', localStorage.getItem('token').replace(/["]+/g, ''));};document.body.appendChild(i);
+javascript:(()=>{var t=document.body.appendChild(document.createElement`iframe`).contentWindow.localStorage.token.replace(/["]+/g, '');prompt('Get Selfbot Discord Token by github.com/vsec7', t)})();
 ```
+
+[<kbd>DETAILS CLICK HERE</kbd>](https://gist.github.com/vsec7/12066af3f704bd337c52c30f4c492ba2)
 
 Paste in your url bar when open discord desktop browser
 
@@ -56,7 +59,7 @@ pip install -r requirements.txt
 python bot.py
 ```
 
-## • Donation
+## • Donate
 
 SOL Address : viloid.sol
 

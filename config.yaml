@@ -4,8 +4,8 @@ BOT_TOKEN:
 CHANNEL_ID: 
   - 10300xxxxxxxxxxxxxx
   - 87751xxxxxxxxxxxxxx
-MODE: simsimi
-REPLY: Y
+MODE: custom
+REPLY: 
 SIMSIMI_LANG: en
 DELAY: 10
 DEL_AFTER: 

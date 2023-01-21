@@ -36,7 +36,7 @@ def quote():
     return random.choice(list(u))['quote']
 
 def simsimi(lc, txt):
-    u = requests.post("https://api.simsimi.info/v1/simtalk", data={ 'lc': lc, 'text': txt}).json()
+    u = requests.post("https://api.simsimi.vn/v1/simtalk", data={ 'lc': lc, 'text': txt}).json()
     return u['message']
 
 def main():
@@ -84,7 +84,7 @@ def main():
                             print("[{}][DELETE] {}".format(me, send['id']))
 
                     elif mode == "repost":
-                        res = Bot.getMessage(chan, repost_last)
+                        res = Bot.getMessage(chan, random.randint(1,repost_last))
                         getlast = list(reversed(res))[0]                    
                         send = Bot.sendMessage(chan, getlast['content'])
                         print("[{}][{}][REPOST] {}".format(me, chan, getlast['content']))
@@ -107,6 +107,15 @@ def main():
                         if del_after:
                             Bot.deleteMessage(chan, send['id'])
                             print("[{}][DELETE] {}".format(me, send['id']))
+
+                    elif mode == "custom":
+                        c = random.choice(open("custom.txt").readlines())
+                        send = Bot.sendMessage(chan, c)
+                        print("[{}][{}][CUSTOM] {}".format(me, chan, c))            
+                        if del_after:
+                            Bot.deleteMessage(chan, send['id'])
+                            print("[{}][DELETE] {}".format(me, send['id']))
+
             except:
                 print(f"[Error] {token} : INVALID TOKEN / KICKED FROM GUILD!")
         
