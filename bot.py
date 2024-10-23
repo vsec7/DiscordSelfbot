@@ -68,6 +68,10 @@ def main():
     
     while True:
         for token in conf['BOT_TOKEN']:
+            if not token:
+                print("[!] An unexpected error occured and we can't find your token.")
+                return
+                
             try:
 
                 for chan in conf['CHANNEL_ID']:
