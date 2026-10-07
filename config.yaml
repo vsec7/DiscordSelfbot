@@ -1,12 +1,10 @@
 BOT_TOKEN: 
-  - ODE3MzkzOTQ4xxxxxxxxxxxxxxxxxxxx
-  - ODk1NTEyMDExxxxxxxxxxxxxxxxxxxxx
+  - MTM1OTUzMTY2NTk2NTMyMjQ5Mw.GaGv_C.4mOGYJDgC3vbtgzJXdr7RcaiqWfGBvqmkvPZVg
 CHANNEL_ID: 
-  - 10300xxxxxxxxxxxxxx
-  - 87751xxxxxxxxxxxxxx
+  - 1555300005445636256
 MODE: custom
-REPLY: 
+REPLY:
 SIMSIMI_LANG: en
-DELAY: 10
-DEL_AFTER: 
-REPOST_LAST_CHAT: 100
+DELAY: [13,18]
+DEL_AFTER:
+REPOST_LAST_CHAT:
